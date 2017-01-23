@@ -12,10 +12,11 @@ class RdfGraph():
         self.offset = 0
         self.y = {}
 
-    def fit(self,rdf, individualsSpecifier="?r"):
+    def fit(self,file,fileformat="n3",individualsSpecifier="?r"):
         "Fits the object from a rdflib graph, given a relation to specify individuals in the form of (relation, object)"
-
-        self.rdf = rdf
+        graph = rdflib.Graph()
+        graph.load(file, format=fileformat)
+        self.rdf = graph
 
         # LOADING INDIVIDUALS IN THE GRAPH 
 
